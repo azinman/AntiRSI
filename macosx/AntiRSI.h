@@ -21,6 +21,7 @@
     IBOutlet AntiRSIView *view;
     IBOutlet NSProgressIndicator *progress;
     IBOutlet AntiRSIButton *postpone;
+    IBOutlet AntiRSIButton *postponeMicro;
     IBOutlet NSTextField *label;
     IBOutlet NSTextField *time;
     IBOutlet NSTextField *next_break;
@@ -72,6 +73,9 @@
 
 // postpone button
 - (IBAction)postpone:(id)sender;
+
+// postponeMicro button
+- (IBAction)postponeMicro:(id)sender;
 
 // workbreak now menu item
 - (IBAction)breakNow:(id)sender;

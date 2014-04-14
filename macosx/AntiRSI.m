@@ -326,6 +326,7 @@ static void handle_status_update(void * data) {
 - (void)doMicroPause {
     [label setStringValue: sMicroPause];
     [progress setDoubleValue:ai_break_progress(core)];
+    [postponeMicro setHidden:NO];
     [postpone setHidden:YES];
     [self drawTimeLeft:ai_break_time_left(core)];
     [self drawNextBreak:ai_seconds_until_next_work_break(core)];
@@ -336,6 +337,7 @@ static void handle_status_update(void * data) {
 - (void)doWorkBreak {
     [label setStringValue: sWorkBreak];
     [progress setDoubleValue:ai_break_progress(core)];
+    [postponeMicro setHidden:YES];
     [postpone setHidden:NO];
     [self drawTimeLeft:ai_break_time_left(core)];
     [self drawNextBreak:ai_seconds_until_next_work_break(core)];
@@ -398,6 +400,11 @@ static void handle_status_update(void * data) {
 // stop work break and postpone by 10 minutes
 - (IBAction)postpone:(id)sender {
     ai_work_break_postpone(core);
+}
+
+// stop work break and postpone by 10 minutes
+- (IBAction)postponeMicro:(id)sender {
+    ai_micro_break_postpone(core);
 }
 
 // start a work break right now

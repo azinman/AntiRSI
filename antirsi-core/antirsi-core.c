@@ -66,6 +66,17 @@ ai_work_break_postpone(ai_core *c)
 }
 
 void
+ai_micro_break_postpone(ai_core *c)
+{
+    c->mini_t = c->mini_interval - 120;
+    c->mini_taking_t = 0;
+    
+    c->state = S_NORMAL;
+    
+    if (c->emit_break_end) c->emit_break_end(c->user_data);
+}
+
+void
 ai_work_break_now(ai_core *c)
 {
   // implicit natural work break, shouldn't use it, but for older clients
